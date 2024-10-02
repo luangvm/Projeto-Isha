@@ -7,11 +7,30 @@ import { MdCheckBox } from "react-icons/md";
 
 function Header() {
   const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState(""); // Estado para confirmação de senha
+  const [cpf, setCpf] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    
+    if (password !== confirmPassword) {
+      alert("As senhas não correspondem!");
+      return;
+    }
+    
     console.log("Username:", username);
-    alert("E-mail enviado ao e-mail informado: " + username);
+    console.log("Password:", password);
+    console.log("CPF:", cpf);
+    
+    alert("Enviando os dados: " + username + " " + password + " " + cpf);
+  };
+
+  const handleCpfChange = (e) => {
+    const formattedCpf = e.target.value
+      .replace(/\D/g, "")
+      .replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+    setCpf(formattedCpf);
   };
 
   return (
@@ -29,10 +48,36 @@ function Header() {
               />
               <FaUser className={styles.icon2}></FaUser>
             </div>
-            <button className={styles.botao} type="submit">
-              Recuperar
-            </button>
-
+            <div>
+              <input
+                className={styles.user}
+                type="password"
+                placeholder="Senha"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <FaLock className={styles.icon3}></FaLock>
+              <input
+                className={styles.user}
+                type="password"
+                placeholder="Confirme a Senha"
+                onChange={(e) => setConfirmPassword(e.target.value)} // Estado de confirmação de senha
+              />
+              <FaLock className={styles.icon}></FaLock>
+            </div>
+            {/* Campo para CPF */}
+            <div>
+              <input
+                className={styles.user}
+                type="text"
+                placeholder="CPF (000.000.000-00)"
+                value={cpf}
+                onChange={handleCpfChange}
+                maxLength="14"
+                required
+              />
+            </div>
+            <FaUser className={styles.icon4}></FaUser>
+            <button className={styles.botao} type="submit">Recuperar</button>
             <div className={styles.recal}>
               <p className={styles.recal}>
                 Não tem uma conta?{" "}
