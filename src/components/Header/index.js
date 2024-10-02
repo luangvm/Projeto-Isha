@@ -13,13 +13,16 @@ function Header() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    
     if (password !== confirmPassword) {
       alert("As senhas não correspondem!");
       return;
     }
+    
     console.log("Username:", username);
     console.log("Password:", password);
     console.log("CPF:", cpf);
+    
     alert("Enviando os dados: " + username + " " + password + " " + cpf);
   };
 
@@ -35,12 +38,12 @@ function Header() {
       <div className={styles.form}>
         <header>
           <form onSubmit={handleSubmit} className={styles.vidro}>
-            <h1>Registre-se</h1>
+            <h1>Recuperação de Senha</h1>
             <div>
               <input
                 className={styles.user}
                 type="email"
-                placeholder="E-mail"
+                placeholder="E-mail Da Conta"
                 onChange={(e) => setUsername(e.target.value)}
               />
               <FaUser className={styles.icon2}></FaUser>
@@ -74,7 +77,7 @@ function Header() {
               />
             </div>
             <FaUser className={styles.icon4}></FaUser>
-            <button className={styles.botao}>Entrar</button>
+            <button className={styles.botao} type="submit">Recuperar</button>
             <div className={styles.recal}>
               <p className={styles.recal}>
                 Não tem uma conta?{" "}
