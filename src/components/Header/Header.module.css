@@ -51,18 +51,11 @@
     margin-top: 8px;
 
 }
-.icon{
-    position: absolute;
-    right: 25px;
-    top:49%;
-    transform: translateY(-50%);
-    font-size: 20px;
-    color: #B88974;
-}
+
 .icon2{
     position: absolute;
     right: 25px;
-    top:36%;
+    top:46%;
     transform: translateY(-50%);
     font-size: 20px;
     color: #B88974;
@@ -79,7 +72,7 @@
 }
 
 .botao {
-    width: 100%;
+    width: 107%;
     height: 50px;
     background-color: #7D5049;
     border: none;
@@ -90,5 +83,7 @@
     font-size: 16px;
     font-weight: 600;
     text-shadow: none;
+    color: white;
+    margin-top: 1%;
 
 }
